@@ -103,7 +103,7 @@ public static int[] merge(int[] left,int[] right){
 
     public static void QuickSort(int l,int r,int[] arr){
         if( l <r){
-            int pivot=helper(l,r,arr);
+            int pivot=helper2(l,r,arr);
             QuickSort(l,pivot-1,arr);
             QuickSort(pivot+1,r,arr);
         }
@@ -124,6 +124,22 @@ public static int[] merge(int[] left,int[] right){
         }
         j++;
         swap(arr,end,j);
+        return j;
+    }
+    private static int helper2(int start, int end, int[] arr) {
+        int  pivot=arr[start];
+        int j=end+1;
+        int i=end;
+        while(i != start){
+            if(arr[i] > pivot){
+                j--;
+                swap(arr,j,i);
+            }
+            i--;
+        }
+        j--;
+
+        swap(arr,start,j);
         return j;
     }
 
