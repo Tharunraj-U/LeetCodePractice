@@ -100,12 +100,42 @@ public static int[] merge(int[] left,int[] right){
         return merge(left,right);
     }
 
+
+    public static void QuickSort(int l,int r,int[] arr){
+        if( l <r){
+            int pivot=helper(l,r,arr);
+            QuickSort(l,pivot-1,arr);
+            QuickSort(pivot+1,r,arr);
+        }
+
+
+
+    }
+
+    private static int helper(int start, int end, int[] arr) {
+        int  pivot=arr[end];
+        int j=start-1;
+        for(int i=start;i<end;i++){
+            if(pivot > arr[i]){
+                j++;
+                swap(arr,i,j);
+            }
+
+        }
+        j++;
+        swap(arr,end,j);
+        return j;
+    }
+
     public static void main(String[] args) {
 //        System.out.print(Arrays.toString(BubbleSort(1,23,2,3,23,2324,4,0)));
 //        System.out.print(Arrays.toString(CyclicSort(1,7,43,5,54,45,6,0,2,4,3)));
 //        System.out.print(Arrays.toString(CyclicSort2(2,3,1,4)));
 //        System.out.print(Arrays.toString(CyclicSort2(1,7,43,5,54,45,6,0,2,4,3)));
-        int arr[]={2,1,4,3};
-            System.out.print(Arrays.toString(Divide(0, arr.length-1,arr)));
+//        System.out.print(Arrays.toString(Divide(0, arr.length-1,arr)));
+        int arr[]={2,1,1,7,43,5,54,45,6,0,2,4,34,3};
+        QuickSort(0, arr.length-1,arr);
+        System.out.print(Arrays.toString(arr));
+
     }
 }
