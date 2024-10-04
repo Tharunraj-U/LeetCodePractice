@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 class MyCalendarTwo {
@@ -45,6 +46,7 @@ class MyCalendarTwo {
         System.out.println(myCalendar.book(10, 40));  // Expected: true (double booking allowed)
         System.out.println(myCalendar.book(5, 15));   // Expected: false (triple booking not allowed)
         System.out.println(myCalendar.book(5, 10));   // Expected: true (no triple booking)
-        System.out.println(myCalendar.book(25, 55));  // Expected: true (double booking allowed)
+        System.out.println(myCalendar.book(25, 55));
+        ArrayList obj=new ArrayList<>();// Expected: true (double booking allowed)
     }
 }

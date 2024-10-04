@@ -1,40 +1,35 @@
 package org.example;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 class Solution {
-    public  int[] numberOfPairs(int[] nums) {
-
-
-        Arrays.sort(nums);
-        Map<Integer,Integer> ans=new HashMap<>();
-         System.out.println(Arrays.toString(nums));
-        int pair=0,i=0,size=0;
-        while (i<nums.length){
-            if(i+1 != nums.length  && nums[i]==nums[i+1]){
-                ans.put(nums[i],nums[i+1]);
-                i+=2;
-
-                pair++;
+    public  static  boolean isHappy(int n) {
+        Set<Integer> obj =new HashSet<>();
+        int sum=0;
+        while( true){
+            if(obj.contains(n)){
+                System.out.print(n+" ");
+                return false;
             }
-            else {
-                i++;
-                size++;
+            obj.add(n);
+            sum=0;
+            while(n >0){
+                  int temp= n%10;
+                   sum+=temp*temp;
+                   n/=10;
+                  
             }
-
-
-System.out.println(ans);
+            if(sum==1){
+             return true;
+            }
+            n=sum;
+            
 
         }
-        System.out.println(ans);
-     return new int []{pair,size} ;
     }
 
     public static void main(String[] args) {
-        Solution obj=new Solution();
-       int[] ans=obj.numberOfPairs(new int[]{1,1});
-       for(int a:ans){
-           System.out.println(a);
-       }
+        isHappy(19);
     }
 }
