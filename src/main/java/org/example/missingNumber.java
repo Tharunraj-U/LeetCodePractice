@@ -3,16 +3,22 @@ package org.example;
 import java.util.Arrays;
 
 public class missingNumber {
-    public int missingNumber(int...arr) {
+    public int missingNumber(int... arr) {
+
         Arrays.sort(arr);
-        int min=arr[0];
         int max=arr[arr.length-1];
+        int min=arr[0];
+        if(min > 1 || (min < 0 && max <0)){
+            return 1;
+        }
+        if(min < 0 ){
+            min=0;
+        }
 
 
-        int j=0;
         for(int i=min+1;i<max;i++){
-            if(!isPresent(arr,arr[j++])){
-                return arr[j];
+            if(!isPresent(arr,i)){
+                return i;
             }
         }
         return max+1;
@@ -34,6 +40,6 @@ public class missingNumber {
     }
 
     public static void main(String[] args) {
-        System.out.println(new missingNumber().missingNumber(1 ,2 ,3, 4, 5));
+        System.out.println(new missingNumber().missingNumber(-1,-2,1,2, 8 ,3, 4, 5));
     }
 }
