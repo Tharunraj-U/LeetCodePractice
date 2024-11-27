@@ -4,22 +4,18 @@ import java.util.Arrays;
 
 public class missingNumber {
     public int missingNumber(int...arr) {
-        int min= Arrays.stream(arr).min().getAsInt();
-        int max=Arrays.stream(arr).max().getAsInt();
-        if(max <=0 && min <=0){
-            return 1;
-        }
-        if(min < 0){
-            min=-1;
-        }
         Arrays.sort(arr);
+        int min=arr[0];
+        int max=arr[arr.length-1];
+
+
         int j=0;
         for(int i=min+1;i<max;i++){
             if(!isPresent(arr,arr[j++])){
                 return arr[j];
             }
         }
-        return 1;
+        return max+1;
     }
     public boolean isPresent(int[] arr,int val){
         int l=0;
@@ -38,6 +34,6 @@ public class missingNumber {
     }
 
     public static void main(String[] args) {
-        new missingNumber().missingNumber(1 ,2 ,3, 4, 5);
+        System.out.println(new missingNumber().missingNumber(1 ,2 ,3, 4, 5));
     }
 }
