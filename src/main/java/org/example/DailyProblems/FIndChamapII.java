@@ -1,4 +1,4 @@
-package org.example;
+package org.example.DailyProblems;
 
 public class FIndChamapII {
         public int findChampion(int n, int[][] edges) {

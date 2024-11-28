@@ -1,4 +1,4 @@
-package org.example;
+package org.example.DailyProblems;
 
 import java.util.Arrays;
 

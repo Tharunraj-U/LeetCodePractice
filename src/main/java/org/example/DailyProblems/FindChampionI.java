@@ -1,4 +1,4 @@
-package org.example;
+package org.example.DailyProblems;
 
 public class FindChampionI {
     public int findChampion(int[][] grid) {

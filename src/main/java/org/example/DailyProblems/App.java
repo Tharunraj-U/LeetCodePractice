@@ -1,5 +1,6 @@
-package org.example;
-public class App 
+package org.example.DailyProblems;
+
+public class App
 {
     public static void main( String[] args )
     {

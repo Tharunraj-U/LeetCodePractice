@@ -1,4 +1,4 @@
-package org.example;
+package org.example.DailyProblems;
 public class RotatingTheBox {
     class Solution {
         public char[][] rotateTheBox(char[][] box) {

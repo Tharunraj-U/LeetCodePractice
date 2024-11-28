@@ -1,8 +1,4 @@
-package org.example;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+package org.example.DailyProblems;
 
 class SolutionCanArrange {
 
