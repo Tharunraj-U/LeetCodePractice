@@ -1,7 +1,7 @@
 package org.example;
 
 public class ImplementAtoi {
-    class Solution {
+    static class Solution {
         public int myAtoi(String s) {
             s=s.trim();
             if(s.isEmpty() || s== null){
@@ -10,7 +10,7 @@ public class ImplementAtoi {
             long ans=0;
             boolean neg=false;
             int index=0,n=s.length();
-            if(index < n && s.charAt(index) == '-' && s.charAt(index)== '+'){
+            if(index < n && s.charAt(index) == '-' || s.charAt(index)== '+'){
                 neg=s.charAt(index)=='-';
                 index++;
             }
@@ -24,5 +24,9 @@ public class ImplementAtoi {
             ans= neg ? -ans:ans;
             return (int)ans;
         }
+    }
+
+    public static void main(String[] args) {
+      System.out.print(new Solution().myAtoi("  -042"));
     }
 }
