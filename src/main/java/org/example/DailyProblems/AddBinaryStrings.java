@@ -2,31 +2,28 @@ package org.example.DailyProblems;
 
 public class AddBinaryStrings {
 
-        public String addBinary(String s1, String s2) {
-            int val1=0,val2=0;
-            int n=s1.length()-1, n1=s2.length()-1;
-            for(int i=n;i > -1;i--){
-                int bin=s1.charAt(i)-48;
-                int pov=n-i;
-               val1+=(int)Math.pow(bin == 1 ? 2 : 0,pov);
-            }
-            for(int i=n1;i > -1;i--){
-                int bin=s2.charAt(i)-48;
-                int pov=n1-i;
-                val2+=(int)Math.pow(bin == 1 ? 2 : 0,pov);
-            }
-
-            String binaray="";
-             while (val1 > 0){
-                 int rem=val1 %2;
-                 val1=val1 /2;
-                 binaray=rem+binaray;
-             }
-
-            return binaray;
+    public String addBinary(String s1, String s2) {
+        int n1=s1.length()-1;
+        int n2=s2.length()-1;
+        StringBuilder s=new StringBuilder();
+        int c=0;
+        while( n1 > -1 || n2 > -1 || c >0 ){
+            int bin1= n1 >= 0 ? s1.charAt(n1)-48: 0;
+            int bin2= n2 >= 0 ? s2.charAt(n2)-48: 0;
+            int res=bin1+bin2+c;
+            c=res/2;
+            s.append(res%2);
+            n1--;n2--;
         }
+        s=s.reverse();
+        while(s.charAt(0) == '0'){
+            s.delete(0,1);
+        }
+        return s.toString();
+    }
+
 
     public static void main(String[] args) {
-        System.out.println( new AddBinaryStrings().addBinary("1011011","11"));
+        System.out.println( new AddBinaryStrings().addBinary("01","10"));
     }
 }
