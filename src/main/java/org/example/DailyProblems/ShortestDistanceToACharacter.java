@@ -1,6 +1,7 @@
 package org.example.DailyProblems;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShortestDistanceToACharacter {
     public int[] shortestToChar(String s, char c) {
@@ -24,7 +25,7 @@ public class ShortestDistanceToACharacter {
         }
         return ans;
     }
-    public int bin(List<Integer> list,int val){
+    public int bin(List<Integer> list, int val){
         int l=0;
         int r=list.size()-1;
         while(l<r){
