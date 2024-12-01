@@ -3,17 +3,9 @@ package org.example.Trees;
 
 import java.util.Scanner;
 
-public class BinaryTree2 {
-    private class Node{
-        private int val;
-        private Node left,right;
-        Node(int data){
-          this.val=data;
-          left=null;
-          right=null;
-        }
-    }
-    private  Node root;
+public class BinaryTree2  extends  BinaryTree{
+
+    public   BinaryTree.Node root;
     public void create(Scanner scanner){
        System.out.print("Enter the root node");
        int val=scanner.nextInt();
@@ -21,7 +13,7 @@ public class BinaryTree2 {
        fillRemaining(scanner,root);
     }
 
-    private void fillRemaining(Scanner scanner, Node node) {
+    private void fillRemaining(Scanner scanner, BinaryTree.Node node) {
         System.out.printf("Do you want to enter the left child  for the %d",node.val);
         boolean left=scanner.nextBoolean();
         if(left){
@@ -41,10 +33,10 @@ public class BinaryTree2 {
             fillRemaining(scanner,newNode);
         }
     }
-    public void levelOrder(){
-        int h=findHeight(root);
+    public void levelOrder(Node root){
+        int h=findHeight(this.root);
         for(int i=1;i<=h;i++){
-            helper(root,i);
+            helper(this.root,i);
         }
     }
 

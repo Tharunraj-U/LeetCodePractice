@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BinaryTree {
-    private  static   class Node{
-        private int val;
+        public     class Node  {
+        public int val;
          public  Node left;
          public Node right;
          Node(int val){
@@ -46,15 +46,32 @@ public class BinaryTree {
             display(node.right);
         }
     }
+    public  void levelOrder1(Node node){
+        if(node == null) return;
+        Queue<Node> queue=new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()){
+            Node node1=queue.poll();
+            System.out.print(node1.val);
+            if(node1.right != null){
+                queue.add(node1.right);
+            }
+            if(node1.left != null){
+                queue.add(node1.left);
+            }
+        }
+
+    }
 
     public static void main(String[] args) {
       BinaryTree binaryTree=new BinaryTree();
         int i=10;
       while(i > 0){
-            binaryTree.insert(i);
+            binaryTree.insert(Math.abs(i-10));
             i--;
         }
-       binaryTree.display(binaryTree.root);
+//       binaryTree.display(binaryTree.root);
+        binaryTree.levelOrder1(binaryTree.root);
     }
 
 }
