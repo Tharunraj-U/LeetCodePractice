@@ -1,5 +1,7 @@
 package org.example.DailyProblems;
 
+import java.util.Arrays;
+
 public class CheckNandItsDoubleExist {
     public boolean checkIfExist(int[] arr) {
         Arrays.sort(arr);
