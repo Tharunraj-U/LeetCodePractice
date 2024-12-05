@@ -23,30 +23,61 @@ public class AVL {
             root=newNode;
             return;
         }
-        insertHelper(root,newNode);
-        selfBalance(newNode);
+        root=insertHelper(root,newNode);
     }
 
-    private void selfBalance(Node newNode) {
+    private Node selfBalance(Node newNode) {
 
-    }
-
-    private  void insertHelper(Node root1,Node node){
-       int rootData=root1.data;
-       if(rootData > node.data){
-           if(root1.left == null){
-               root1.left=node;
-               return;
-           }
-           insertHelper(root1.left,node);
-       }
-       if(rootData <= node.data){
-            if(root1.right == null){
-                root1.right=node;
-                return;
+        int balanceFacter=getBalanceFacter(newNode.left,newNode.right);
+        if(balanceFacter < -1){
+            if(helperHeight(newNode.right) > 0) {
+               newNode.right=rightRotate(newNode.right);
             }
-           insertHelper(root1.right,node);
+            return leftRotate(newNode);
         }
+        if(balanceFacter > 1){
+            if(helperHeight(newNode.left) < 0) {
+                newNode.left=leftRotate(newNode.left);
+            }
+            return rightRotate(newNode);
+        }
+        return  newNode;
+
+    }
+    private  Node leftRotate(Node parent){
+        Node newParent=parent.right;
+        Node newParentChild=newParent.left;
+
+        newParent.left=parent;
+        parent.right=newParentChild;
+        return  newParent;
+    }
+    private  Node rightRotate(Node parent){
+        if (parent.left == null) {
+            return parent; // No need to rotate if left child is null
+        }
+        Node newParent=parent.left;
+        Node newParentChild=newParent.right;
+        newParent.right=parent;
+        parent.left=newParentChild;
+        return  newParent;
+    }
+
+    private int getBalanceFacter(Node left, Node right) {
+        return helperHeight(left)-helperHeight(right);
+    }
+
+    private  Node insertHelper(Node root1,Node node){
+        if(root1 == null){
+            return  node;
+        }
+        if(root1.data  > node.data){
+            root1.left=insertHelper(root1.left,node);
+        }
+        if(root1.data <= node.data){
+            root1.right=insertHelper(root1.right,node);
+        }
+       return  selfBalance(root1);
     }
 
 
@@ -85,5 +116,9 @@ public class AVL {
         int left=helperHeight(root.left);
         int right=helperHeight(root.right);
         return Math.max(right,left)+1;
+    }
+    public  int numberOfNodes(){
+
+        return ( 1 << (helperHeight(root)+1))-1;
     }
 }
