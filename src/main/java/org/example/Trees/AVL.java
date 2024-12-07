@@ -14,7 +14,7 @@ public class AVL {
             right=null;
         }
     }
-    private Node root=null;
+    public Node root=null;
 
 
     public void insert(int data){
@@ -120,5 +120,38 @@ public class AVL {
     public  int numberOfNodes(){
 
         return ( 1 << (helperHeight(root)+1))-1;
+    }
+
+    public void deleteValue(int data){
+       root=helperDelete(data,root);
+    }
+    public   int  findMin(Node root){
+        if(root!=null) {
+            int left = Math.min(root.data, findMin(root.left));
+            int right = Math.min(root.data, findMin(root.right));
+            return Math.min(left, right);
+        }
+        return Integer.MAX_VALUE;
+    }
+
+    private Node helperDelete(int data, Node root) {
+        if(root==null) return root;
+        if(data == root.data){
+            if(root.left == null && root.right==null)root=null;
+            else if(root.left != null && root.right == null)root=root.left;
+            else if(root.right != null && root.left == null)root=root.right;
+            else{
+               int minVal=findMin(root.right);
+               root.data=minVal;
+               root.right=helperDelete(minVal,root.right);
+            }
+        }
+        else if(root.data > data){
+           root.left=helperDelete(data,root.left);
+        }
+        else{
+            root.right=helperDelete(data,root.right);
+        }
+        return root != null ? selfBalance(root):root;
     }
 }
