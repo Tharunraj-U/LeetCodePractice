@@ -21,6 +21,9 @@ public class Main {
 
         SegmentTree segmentTree=new SegmentTree(1,2,3,4,5,6,7,8,9,10);
         segmentTree.display();
+        System.out.println();
+        segmentTree.update(10,5);
+        System.out.print( segmentTree.query(0,9));
         int a[]=new int[10];
         SegmentTree segmentTree1=new SegmentTree(a);
 

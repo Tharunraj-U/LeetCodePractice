@@ -42,4 +42,33 @@ public class SegmentTree {
             display(node.right);
         }
     }
+    public int query(int startIndex,int endIndex){
+        return query(startIndex,endIndex,root);
+    }
+    private   int query(int start,int end,Node node){
+        if(  node.rightMostIndex  < start || end  < node.leftMostIndex){
+            return 0;
+        }
+        if( node.leftMostIndex >= start &&  node.rightMostIndex <= end){
+            return node.sum;
+        }
+        return query(start,end,node.left)+query(start,end,node.right);
+    }
+
+    public void update(int index,int val){
+        update(root,index, val);
+    }
+
+    private Node update(Node node ,int index,int val){
+        if(index >= node.leftMostIndex && index <= node.rightMostIndex){
+            if(index == node.leftMostIndex && index == node.rightMostIndex){
+                node.sum=val;
+                return  node;
+            }
+             Node leftSum=update(node.left,index,val);
+            Node rightSum=update(node.right,index,val);
+            node.sum=leftSum.sum+rightSum.sum;
+        }
+        return  node;
+    }
 }
