@@ -1,6 +1,7 @@
 package org.example.DailyProblems;
 
 import java.util.Map;
+import java.util.Queue;
 
 class MaxAverageRatio {
     public double maxAverageRatio(int[][] classes, int extraStudents) {
