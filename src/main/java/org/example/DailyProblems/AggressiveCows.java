@@ -1,5 +1,7 @@
 package org.example.DailyProblems;
 
+import java.util.Arrays;
+
 class  AggressiveCows {
     public static int aggressiveCows(int[] stalls, int k) {
         // Step 1: Sort the stalls
