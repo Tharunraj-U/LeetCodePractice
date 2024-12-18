@@ -1,9 +1,11 @@
 package org.example.DailyProblems;
 
+import java.util.Arrays;
+
 class FindPages {
     public static int findPages(int[] arr, int k) {
         if(arr.length < k)return -1;
-       int s=Arrays.stream(arr).max().getAsInt(),e=Arrays.stream(arr).sum();
+       int s= Arrays.stream(arr).max().getAsInt(),e=Arrays.stream(arr).sum();
        while(s<=e){
            int mid=s+(e-s)/2;
            if(canPossible(arr,k,mid)){
