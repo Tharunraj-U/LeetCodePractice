@@ -15,7 +15,7 @@ public class HuffmanCoder {
         return ans;
     }
 
-    private  class  Node {
+    private  class  Node implements  Comparable<Node> {
 
       Character data;
       int cost;
@@ -28,6 +28,10 @@ public class HuffmanCoder {
           right=null;
       }
 
+        @Override
+        public int compareTo(Node node) {
+            return this.data -node.data;
+        }
     }
     public  HuffmanCoder(String feeder)throws  Exception{
         HashMap<Character,Integer> fmap=new HashMap<>();
@@ -35,8 +39,7 @@ public class HuffmanCoder {
             fmap.put(a,fmap.getOrDefault(a,0)+1);
         }
         PriorityQueue<Node> minHeap=new PriorityQueue<>();
-        Set<Map.Entry<Character,Integer>> entry=fmap.entrySet();
-        for(Map.Entry<Character,Integer> obj:entry){
+        for(Map.Entry<Character,Integer>  obj: fmap.entrySet()){
             Node node=new Node(obj.getKey(),obj.getValue());
             minHeap.add(node);
         }
