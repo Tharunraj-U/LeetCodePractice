@@ -1,35 +1,37 @@
 package org.example.DailyProblems;
 
-import java.util.HashSet;
-import java.util.Set;
-
 class Solution {
-    public  static  boolean isHappy(int n) {
-        Set<Integer> obj =new HashSet<>();
-        int sum=0;
-        while( true){
-            if(obj.contains(n)){
-                System.out.print(n+" ");
-                return false;
-            }
-            obj.add(n);
-            sum=0;
-            while(n >0){
-                  int temp= n%10;
-                   sum+=temp*temp;
-                   n/=10;
-                  
-            }
-            if(sum==1){
-             return true;
-            }
-            n=sum;
-            
+    public String shiftingLetters(String s, int[][] shifts) {
+        int[] a = new int[s.length() + 1];
 
+        // Apply shifts
+        for (int[] shift : shifts) {
+            int start = shift[0];
+            int end = shift[1];
+            int direction = shift[2] == 1 ? 1 : -1;
+
+            a[start] += direction;
+            if (end + 1 < a.length) {
+                a[end + 1] -= direction;
+            }
         }
-    }
 
-    public static void main(String[] args) {
-        isHappy(19);
+        // Compute prefix sum
+        for (int i = 1; i < a.length; i++) {
+            a[i] += a[i - 1];
+        }
+
+        // Create the result string
+        StringBuilder ans = new StringBuilder(s);
+        for (int i = 0; i < s.length(); i++) {
+            int shift = a[i] % 26; // Ensure shift stays within the range of 0-25
+            if (shift < 0) {
+                shift += 26; // Handle negative shifts
+            }
+            char newChar = (char) ((s.charAt(i) - 'a' + shift) % 26 + 'a');
+            ans.setCharAt(i, newChar);
+        }
+
+        return ans.toString();
     }
 }
