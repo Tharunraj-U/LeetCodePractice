@@ -1,37 +1,34 @@
 package org.example.DailyProblems;
 
 class Solution {
-    public String shiftingLetters(String s, int[][] shifts) {
-        int[] a = new int[s.length() + 1];
-
-        // Apply shifts
-        for (int[] shift : shifts) {
-            int start = shift[0];
-            int end = shift[1];
-            int direction = shift[2] == 1 ? 1 : -1;
-
-            a[start] += direction;
-            if (end + 1 < a.length) {
-                a[end + 1] -= direction;
+     public boolean dfs(int node,ArrayList<ArrayList<Integer>> adj,  boolean[] visN,boolean[] visE){
+        visN[node]=true;
+        visE[node]=true;
+        for(int neighbor:adj.get(node)){
+            if(!visN[neighbor]){
+             if(dfs(neighbor,adj,visN,visE))return true;
+            }else if(visE[neighbor]){
+                return true;
             }
         }
-
-        // Compute prefix sum
-        for (int i = 1; i < a.length; i++) {
-            a[i] += a[i - 1];
+         visE[node]=!true;
+         return false;
+    }
+    public boolean canFinish(int V, int[][] p) {
+        ArrayList<ArrayList<Integer>> adj =new ArrayList<>();
+        for(int i=0;i<V;i++){
+            adj.add(new ArrayList());
         }
-
-        // Create the result string
-        StringBuilder ans = new StringBuilder(s);
-        for (int i = 0; i < s.length(); i++) {
-            int shift = a[i] % 26; // Ensure shift stays within the range of 0-25
-            if (shift < 0) {
-                shift += 26; // Handle negative shifts
-            }
-            char newChar = (char) ((s.charAt(i) - 'a' + shift) % 26 + 'a');
-            ans.setCharAt(i, newChar);
+        for (int[] edge : p) {
+            adj.get(edge[1]).add(edge[0]);
         }
-
-        return ans.toString();
+       boolean[] visN=new boolean[V];
+       boolean[] visE=new boolean[V];
+       for(int i=0;i<V;i++){
+          if(!visN[i]){
+              if(dfs(i,adj,visN,visE))return !true;
+          } 
+       }
+       return !false;
     }
 }
