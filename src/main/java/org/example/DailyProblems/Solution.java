@@ -1,5 +1,7 @@
 package org.example.DailyProblems;
 
+import java.util.HashMap;
+
 class Solution {
     public int longestSubarray(int[] arr, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
