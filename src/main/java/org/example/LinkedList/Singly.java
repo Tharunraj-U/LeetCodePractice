@@ -1,7 +1,7 @@
 package org.example.LinkedList;
 
 public class Singly {
-     private  class  Node{
+     public static class  Node{
          int val;
          Node next;
          Node (int val){
@@ -9,7 +9,7 @@ public class Singly {
              next=null;
          }
     }
-    private Node head=null;
+    public  Node head=null;
      private  Node tail=null;
      private  int height=0;
 
