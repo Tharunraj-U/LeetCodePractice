@@ -46,7 +46,8 @@ public class TodayProblem extends Singly {
         }
         Node next=end.next,firstGL=head;
         head=rev(head,end);
-        Node last=rev1(next);
+        Node last=rev1(next
+        );
         firstGL.next=last;
         return head;
     }
