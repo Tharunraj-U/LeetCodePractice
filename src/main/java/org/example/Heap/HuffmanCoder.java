@@ -21,7 +21,7 @@ public class HuffmanCoder {
       int cost;
       Node left;
       Node right;
-      N
+
       public  Node(Character data,int cost){
           this.cost=cost;
           this.data=data;
