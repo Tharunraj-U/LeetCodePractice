@@ -21,11 +21,13 @@ public class HuffmanCoder {
       int cost;
       Node left;
       Node right;
+      N
       public  Node(Character data,int cost){
           this.cost=cost;
           this.data=data;
           left=null;
           right=null;
+
       }
 
         @Override
@@ -36,7 +38,7 @@ public class HuffmanCoder {
     public  HuffmanCoder(String feeder)throws  Exception{
         HashMap<Character,Integer> fmap=new HashMap<>();
         for(char a:feeder.toCharArray()){
-            fmap.put(a,fmap.getOrDefault(a,0)+1);
+            fmap.put(a,fmap.getOrDefault(a,0)+1) ;
         }
         PriorityQueue<Node> minHeap=new PriorityQueue<>();
         for(Map.Entry<Character,Integer>  obj: fmap.entrySet()){
@@ -48,7 +50,7 @@ public class HuffmanCoder {
             Node second=minHeap.remove();
             Node newNode=new Node('\0',first.cost+second.cost);
             newNode.left=first;
-            newNode.right=second;
+            newNode.right=second ;
             minHeap.add(newNode);
         }
         Node fullTree=minHeap.remove();
