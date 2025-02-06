@@ -1,5 +1,8 @@
 package org.example.DailyProblems;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class SolutionTupleSameProduct {
     public int tupleSameProduct(int[] nums) {
         int n=nums.length,ans=0;
