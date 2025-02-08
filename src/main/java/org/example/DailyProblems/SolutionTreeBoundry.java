@@ -1,10 +1,19 @@
 package org.example.DailyProblems;
 
-import org.w3c.dom.Node;
 
 import java.util.ArrayList;
 import java.util.Stack;
+class Node
+{
+    int data;
+    Node left, right;
 
+    public Node(int d)
+    {
+        data = d;
+        left = right = null;
+    }
+}
 class SolutionTreeBoundry {
     void addRight(ArrayList<Integer> list, Node root){
           Stack<Integer> stack=new Stack<>();
