@@ -13,7 +13,7 @@ public class KarpRabin {
         return newHash+newChar*Math.pow(101,i-1);
     }
     public void Search(String s,String s1){
-
+         StringBuilder stringBuilder=new StringBuilder();
         double hash=hashFunction(s);
         double hash2=hashFunction(s1.substring(0,s.length()));
         for(int i=0;i<=s1.length()-s.length();i++){
