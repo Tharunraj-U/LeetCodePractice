@@ -1,5 +1,8 @@
 package org.example.DailyProblems;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 class SolutionMaxSlidingWindow {
     public int[] maxSlidingWindow(int[] arr, int k) {
         int ans[]=new int[arr.length+1-k];
