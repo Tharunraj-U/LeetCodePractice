@@ -12,7 +12,10 @@ class BridgeInGraph {
             if(!vis.get(nei)){
                 dfs(list,nei,curr,vis,high,low,ans);
                 if(low[nei] > high[curr]){
-                    ans.add(new ArrayList<>(List.of(nei,curr)));
+                    ArrayList<Integer> list1=new ArrayList<>();
+                    list1.add(nei);
+                    list1.add(curr);
+                    ans.add(list1);
                 }
             }
             low[curr]=Math.min(low[curr],low[nei]);

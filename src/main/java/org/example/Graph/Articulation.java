@@ -51,7 +51,7 @@ class Articulation {
             i++;
         }
         
-        return ans.size() > 0 ? ans : new ArrayList<>(List.of(-1));
+        return ans.size() > 0 ? ans : new ArrayList<>((-1));
         
     }
 }
