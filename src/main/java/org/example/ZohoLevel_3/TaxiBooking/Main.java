@@ -1,6 +1,6 @@
-package org.example.ZohoLevel_3.Taxi;
+package org.example.ZohoLevel_3.TaxiBooking;
 
-import org.example.ZohoLevel_3.Taxi.service.TaxiService;
+import org.example.ZohoLevel_3.TaxiBooking.service.TaxiService;
 
 import java.util.Scanner;
 

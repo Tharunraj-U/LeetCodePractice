@@ -1,0 +1,1 @@
+Taxi-1: BookingID=1, CustomerID=1, From=A, To=B, PickupTime=1, DropTime=2, Amount=200

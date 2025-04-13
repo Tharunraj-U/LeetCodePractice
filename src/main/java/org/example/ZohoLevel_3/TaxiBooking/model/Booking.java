@@ -1,4 +1,4 @@
-package org.example.ZohoLevel_3.Taxi.model;
+package org.example.ZohoLevel_3.TaxiBooking.model;
 
 public class Booking {
     private  int bookingId;

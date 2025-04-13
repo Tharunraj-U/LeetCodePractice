@@ -1,15 +1,12 @@
-package org.example.ZohoLevel_3.Taxi.service;
-
-import org.example.ZohoLevel_3.Main;
-import org.example.ZohoLevel_3.Taxi.model.Booking;
-import org.example.ZohoLevel_3.Taxi.model.Taxi;
-
+package org.example.ZohoLevel_3.TaxiBooking.service;
+import org.example.ZohoLevel_3.TaxiBooking.model.Booking;
+import org.example.ZohoLevel_3.TaxiBooking.model.Taxi;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 public class TaxiService {
+//    Duration duration=Duration.between()
     private  static  List<Taxi> taxis=new ArrayList<>();
     private  int customerCount=1;
     public void initializeTaxis(int n){
@@ -38,6 +35,7 @@ public class TaxiService {
         Booking booking=new Booking(bookingId,customerId,from,to,pickUpTime,dropTime,amount);
         selectTaxi.setBookings(booking);
         System.out.println(" Taxi-"+selectTaxi.getId()+" is Booked for you \\n");
+        saveToFile(booking,selectTaxi.getId());
         return true;
     }
     public  void displayTaxiDetails(){
@@ -55,11 +53,12 @@ public class TaxiService {
         }
     }
     public  void saveToFile(Booking b,int taxiId){
-        try(FileWriter fw=new FileWriter("data/bookings.txt",true)){
+        try(FileWriter fw=new FileWriter("C:\\Users\\DELL\\Desktop\\LeetCodePractice\\src\\main\\java\\org\\example\\ZohoLevel_3\\Taxi\\data\\bookings.txt",true)){
              fw.write("Taxi-" + taxiId + ": BookingID=" + b.getBookingId() + ", CustomerID=" + b.getCustomerId() +
                      ", From=" + b.getPickUpPoint() + ", To=" + b.getDropPoint() +
                      ", PickupTime=" + b.getPickUpTime() + ", DropTime=" + b.getDropTime() +
                      ", Amount=" + b.getAmount() + "\n");
+
         }catch (Exception e){
             System.out.println("Error saving booking to file.");
         }
