@@ -1,5 +1,7 @@
 package org.example.ZohoLevel_2;
 
+import java.util.*;
+
 class ReturnTwoPrimeNumbers{
     public static boolean isPrime(int n){
         if(n <= 1)return false;
