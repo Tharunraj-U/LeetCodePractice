@@ -2,7 +2,7 @@ package org.example.ZohoLevel_2;
 
 import java.util.Arrays;
 
-class Solution {
+class StringMultiply {
     public String multiply(String s1, String s2) {
         int res[]=new int[s1.length()+s2.length()];
         for(int i=s1.length()-1;i>-1;i--){
