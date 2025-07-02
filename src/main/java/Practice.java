@@ -6,52 +6,51 @@ import java.util.Locale;
 
 public class Practice {
 
-    public static void main(String[] args) throws ParseException {
-        String s="24th june,2015";
-        int w=5;
-        int days=10;
-
-
-        s=s.replaceAll("(\\d+)(rd|th|nd|st)","$1");
-
-
-        Date date=new SimpleDateFormat("d MMMM,yyyy", Locale.ENGLISH).parse(s);
-        Calendar calendar=Calendar.getInstance();
-        calendar.setTime(date);
-
-        while (days >0){
-            calendar.add(Calendar.DAY_OF_MONTH,1);
-            int currDay=calendar.get(Calendar.DAY_OF_WEEK);
-            if(w ==6) {
-                if (currDay != Calendar.SUNDAY) {
-                    days--;
-                }
-            }else if( w == 5){
-                if (currDay >= Calendar.MONDAY && currDay <= Calendar.FRIDAY) {
-                    days--;
-                }
-            }
-        }
-
-
-        int day1=calendar.get(Calendar.DAY_OF_MONTH);
-        String day2=fun(day1);
-
-
-
-        String ans=new SimpleDateFormat(" MMMM,yyyy",Locale.ENGLISH).format(calendar.getTime());
-        System.out.println(day2+ans);
+    public static void main(String[] args) throws Exception {
+        String inputDate = "22nd June,2025";
+        int businessDaysInWeek = 5;
+        int businessDaysToAdd = 7;
+       String ans=fun(inputDate,businessDaysInWeek,businessDaysToAdd);
+       System.out.println(ans);
 
 
     }
+    public static String fun(String inputDate, int businessDaysInWeek, int businessDaysToAdd)throws Exception{
+       inputDate=inputDate.replaceAll("(\\d+)(st|nd|rd|th)","$1");
 
-    private static String fun(int day1) {
-        if(day1 >=11 && day1 <=20)return  day1+"th";
-        switch (day1%10){
-            case 1: return day1+"st";
-            case 2:return  day1+"nd";
-            case 3: return day1+"rd";
-            default: return day1+"th";
+        Date date= new SimpleDateFormat("dd MMM,yyyy",Locale.ENGLISH).parse(inputDate);
+
+        Calendar calender= Calendar.getInstance();
+        calender.setTime(date);
+
+        while(businessDaysToAdd > 0) {
+            calender.add(Calendar.DAY_OF_MONTH, 1);
+            businessDaysInWeek = calender.get(Calendar.DAY_OF_WEEK);
+
+            if (businessDaysInWeek == 5) {
+                if (businessDaysInWeek >= Calendar.MONDAY && businessDaysInWeek <= Calendar.SATURDAY)
+                    businessDaysToAdd--;
+            } else if (businessDaysInWeek == 6) {
+                if (businessDaysInWeek != Calendar.SUNDAY) {
+                    businessDaysToAdd--;
+                }
+            }
         }
+        String ans = new SimpleDateFormat("MMMM,yyyy", Locale.ENGLISH).format(calender.getTime());
+        int d=calender.get(Calendar.DAY_OF_MONTH);
+        String suffix=getdsuffix(d);
+        return d + suffix + ans;
+    }
+
+    public static String getdsuffix(int d){
+        if(d >= 11 && d <= 13)return "th";
+        switch (d%10){
+            case 1: return "st";
+            case 2:return "nd";
+            case 3: return "rd";
+            case 4: return "th";
+            default  : return "th";
+        }
+
     }
 }

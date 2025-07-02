@@ -11,7 +11,7 @@ class DaysBetween {
         if(m <=2){
             y--;
         }
-        return (int)((y/4)-(y/100)+(y/400));
+        return (int)((y/4)+(y/400)-(y/100));
     }
     public static int CountDays(int m,int d,int y){
         d+=y*365;
